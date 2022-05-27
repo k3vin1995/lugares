@@ -1,24 +1,24 @@
 package com.lugares
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
+import android.util.Log
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.lugares.databinding.ActivityMainBinding
-import java.security.Principal
 
+class MainActivity : AppCompatActivity() {
 
-class MainActivity : ComponentActivity() {
-
+    //Variable para acceder a la autenticación
     private lateinit var auth: FirebaseAuth
-    private lateinit var binding: ActivityMainBinding
 
+    //Variable para acceder a los elementos de la pantalla activity_main.xml
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,15 +33,13 @@ class MainActivity : ComponentActivity() {
         binding.btRegister.setOnClickListener { haceRegistro() }
         binding.btLogin.setOnClickListener { haceLogin() }
 
-
-
-
     }
 
     private fun haceLogin() {
+        Log.i("haceLogin","entrando")
         val email = binding.etCorreo.text.toString()
         val clave = binding.etClave.text.toString()
-
+        Log.i("haceLogin","antes de hacer registro")
         //Se usa la función para crear un usuario por medio de correo y contraseña
         auth.signInWithEmailAndPassword(email,clave)
             .addOnCompleteListener(this) { task ->
@@ -55,6 +53,7 @@ class MainActivity : ComponentActivity() {
                     actualiza(null)
                 }
             }
+        Log.i("haceLogin","Fuera de autenticacion")
     }
 
     private fun haceRegistro() {
@@ -79,18 +78,12 @@ class MainActivity : ComponentActivity() {
     private fun actualiza(user: FirebaseUser?) {
         if (user!=null) {
             // paso a la pantalla principal
-            val intent = Intent(this, Principal::class.java)
+            val intent = Intent(this,Principal::class.java)
             startActivity(intent)
         }
     }
 
-    public override fun onStart() {
-        super.onStart()
-        val user = auth.currentUser
-        actualiza(user)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_logoff -> {
                 Firebase.auth.signOut()
@@ -99,6 +92,6 @@ class MainActivity : ComponentActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-}
+    }*/
 
+}
