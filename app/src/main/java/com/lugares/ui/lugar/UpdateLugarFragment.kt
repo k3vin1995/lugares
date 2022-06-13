@@ -9,16 +9,19 @@ import android.widget.Toast
 import android.widget.Toast.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.lugares.R
-import com.lugares.databinding.FragmentAddLugarBinding
+import com.lugares.databinding.FragmentUpdateLugarBinding
 import com.lugares.model.Lugar
 import com.lugares.viewmodel.LugarViewModel
 
-class AddLugarFragment : Fragment() {
+class UpdateLugarFragment : Fragment() {
+
+    private val args by navArgs<UpdateLugarFragmentArgs>()
 
     private lateinit var lugarViewModel: LugarViewModel
 
-    private var _binding: FragmentAddLugarBinding? = null
+    private var _binding: FragmentUpdateLugarBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,24 +29,29 @@ class AddLugarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         lugarViewModel = ViewModelProvider(this)[LugarViewModel::class.java]
-        _binding = FragmentAddLugarBinding.inflate(inflater,container,false)
+        _binding = FragmentUpdateLugarBinding.inflate(inflater,container,false)
 
-        binding.btAdd.setOnClickListener { addLugar()}
+        binding.etNombre.setText(args.lugar.nombre)
+        binding.etTelefono.setText(args.lugar.telefono)
+        binding.etCorreo.setText(args.lugar.correo)
+        binding.etWeb.setText(args.lugar.web)
+
+        binding.btActualizar.setOnClickListener { updateLugar()}
 
         return binding.root
     }
 
-    private fun addLugar() {
+    private fun updateLugar() {
         val nombre=binding.etNombre.text.toString()
         val correo=binding.etCorreo.text.toString()
         val telefono=binding.etTelefono.text.toString()
         val web=binding.etWeb.text.toString()
 
         if(nombre.isNotEmpty()) {
-            val lugar = Lugar(0,nombre,correo,telefono,web,0.0,0.0,0.0,"","")
-            lugarViewModel.addLugar(lugar)
+            val lugar = Lugar(args.lugar.id,nombre,correo,telefono,web,0.0,0.0,0.0,"","")
+            lugarViewModel.updateLugar(lugar)
             makeText(requireContext(),getString(R.string.lugarAdded), LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_addLugarFragment_to_nav_lugar)
+            findNavController().navigate(R.id.action_updateLugarFragment_to_nav_lugar)
         } else {
             makeText(requireContext(),getString(R.string.noData), LENGTH_SHORT).show()
 

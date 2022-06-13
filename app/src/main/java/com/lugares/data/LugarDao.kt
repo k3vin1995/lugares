@@ -8,8 +8,8 @@ import com.lugares.model.Lugar
 @Dao
 interface LugarDao {
 
-        @Insert(onConflict = OnConflictStrategy.IGNORE)
-        suspend fun addLugar(lugar : Lugar)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addLugar(lugar : Lugar)
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
     suspend fun updateLugar(lugar : Lugar)
