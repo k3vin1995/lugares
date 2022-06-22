@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
@@ -83,15 +84,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_logoff -> {
-                Firebase.auth.signOut()
-                finish()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }*/
+    //si el usuario se encuentra autenticado, pasa a la siguente pantalla
+    public override fun onStart(){
+        super.onStart()
+        // se obtiene el usuario actual
+        val usuario = auth.currentUser
+        actualiza(usuario)
+    }
 
 }
