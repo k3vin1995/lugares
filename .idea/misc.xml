@@ -17,8 +17,11 @@
         <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/drawable/ic_delete.xml" value="0.332" />
         <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/drawable/ic_email_24.xml" value="0.205" />
         <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/drawable/ic_logoff.xml" value="0.218" />
-        <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/layout/fragment_add_lugar.xml" value="0.3625" />
+        <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/layout/content_principal.xml" value="0.1" />
+        <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/layout/fragment_add_lugar.xml" value="0.18925831202046037" />
+        <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/layout/fragment_lugar.xml" value="0.3625" />
         <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/layout/fragment_update_lugar.xml" value="0.3625" />
+        <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/layout/lugar_fila.xml" value="0.1" />
         <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/menu/delete_menu.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/user/StudioProjects/lugares/app/src/main/res/menu/principal.xml" value="0.3625" />
       </map>

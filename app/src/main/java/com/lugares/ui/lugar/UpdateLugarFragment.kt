@@ -155,7 +155,7 @@ class UpdateLugarFragment : Fragment() {
 
         if(nombre.isNotEmpty()) {
             val lugar = Lugar(args.lugar.id,nombre,correo,telefono,web,0.0,0.0,0.0,"","")
-            lugarViewModel.updateLugar(lugar)
+            lugarViewModel.saveLugar(lugar)
             makeText(requireContext(),getString(R.string.lugarAdded), LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateLugarFragment_to_nav_lugar)
         } else {
