@@ -56,6 +56,8 @@ class UpdateLugarFragment : Fragment() {
         binding.btWeb.setOnClickListener{ verWeb()}
         //binding.btLocation.setOnClickListener{ verMapa()}
         binding.btPlay.setOnClickListener { mediaPlayer.start() }
+
+        binding.btWhatsapp.setOnClickListener { enviarWhatsApp() }
         //indica que en la pantalla se agrega opcion de menu
 
         //para iniciar el boton de play
@@ -76,9 +78,39 @@ class UpdateLugarFragment : Fragment() {
                 .into(binding.imagen)
         }
 
-
+        binding.btLocation.setOnClickListener { verMapa() }
         setHasOptionsMenu(true)
         return binding.root
+    }
+
+    private fun verMapa(){
+        val latitud=binding.tvLatitud.text.toString().toDouble()
+        val longitud=binding.tvLongitud.text.toString().toDouble()
+        if (latitud.isFinite() && longitud.isFinite()){
+            val location = Uri.parse("geo:$latitud,$longitud?z18")
+            val mapIntent = Intent(Intent.ACTION_VIEW,location)
+            startActivity(mapIntent)
+        }else{
+
+        }
+    }
+    private fun enviarWhatsApp() {
+
+        val telefono = binding.etTelefono.text.toString()
+        if (telefono.isNotEmpty()){
+
+            val sendIntent = Intent(Intent.ACTION_VIEW)
+            val uri = "whatsapp://send?phone=506$telefono&text="+getString(R.string.msg_saludos)
+            sendIntent.setPackage("com.whatsapp")
+            sendIntent.data=Uri.parse(uri)
+            startActivity(sendIntent)
+
+        }else{
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.msg_datos),Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun llamarLugar() {

@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name" translatable="false">Lugares</string>
-     <string name="tv_correo">Correo</string>
+    <!--75891553747-7k5r1nu61rhnmujmd2mrkn1njh0n9tm0.apps.googleusercontent.com-->
+
+
+    <string name="default_web_client_idr">75891553747-7k5r1nu61rhnmujmd2mrkn1njh0n9tm0.apps.googleusercontent.com</string>
+    <string name="tv_correo">Correo</string>
     <string name="tv_clave">Contraseña</string>
     <string name="msg_fallo_registro">Error registrando usuario</string>
     <string name="msg_fallo_login">Error autenticando usuario</string>

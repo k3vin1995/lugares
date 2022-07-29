@@ -66,9 +66,9 @@ dependencies {
 
 
 //Navegación entre fragmentos
-    implementation "androidx.navigation:navigation-fragment-ktx:2.5.0"
-    implementation "androidx.navigation:navigation-ui-ktx:2.5.0"
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.4.2"
 
 
 
@@ -87,6 +87,7 @@ dependencies {
     //para autenticas mediante google
     implementation'com.google.android.gms:play-services-auth:20.2.0'
 
-
+//Para generar el mapa
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
 }

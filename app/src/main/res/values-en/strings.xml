@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="tv_correo">Email</string>
+    <string name="default_web_client_idr">75891553747-7k5r1nu61rhnmujmd2mrkn1njh0n9tm0.apps.googleusercontent.com</string>
     <string name="tv_clave">Password</string>
     <string name="msg_fallo_registro">User Error!</string>
     <string name="msg_fallo_login">Error autenticando usuario</string>
