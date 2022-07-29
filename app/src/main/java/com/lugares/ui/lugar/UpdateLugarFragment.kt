@@ -3,6 +3,7 @@ package com.lugares.ui.lugar
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -12,6 +13,7 @@ import android.widget.Toast.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.lugares.R
 import com.lugares.databinding.FragmentUpdateLugarBinding
 import com.lugares.model.Lugar
@@ -26,6 +28,9 @@ class UpdateLugarFragment : Fragment() {
 
     private var _binding: FragmentUpdateLugarBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var mediaPlayer: MediaPlayer
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +55,26 @@ class UpdateLugarFragment : Fragment() {
         //binding.btWhatsapp.setOnClickListener{ enviarWhatsApp()}
         binding.btWeb.setOnClickListener{ verWeb()}
         //binding.btLocation.setOnClickListener{ verMapa()}
+        binding.btPlay.setOnClickListener { mediaPlayer.start() }
         //indica que en la pantalla se agrega opcion de menu
+
+        //para iniciar el boton de play
+        if (args.lugar.rutaAudio?.isNotEmpty() == true){
+            mediaPlayer = MediaPlayer()
+            mediaPlayer.setDataSource(args.lugar.rutaAudio)
+            mediaPlayer.prepare()
+            binding.btPlay.isEnabled=true
+            binding.btPlay.setOnClickListener { mediaPlayer.start() }
+        } else {
+            binding.btPlay.isEnabled=false
+        }
+        // ruta hay ruta imagen la dibujo
+        if (args.lugar.rutaImagen?.isNotEmpty() == true){
+            Glide.with(requireContext())
+                .load(args.lugar.rutaImagen)
+                .fitCenter()
+                .into(binding.imagen)
+        }
 
 
         setHasOptionsMenu(true)

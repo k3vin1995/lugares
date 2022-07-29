@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Lugares</string>
-     <string name="tv_correo">Correo</string>
+
+    <string name="tv_correo">Correo</string>
     <string name="tv_clave">Contraseña</string>
     <string name="msg_fallo_registro">Error registrando usuario</string>
     <string name="msg_fallo_login">Error autenticando usuario</string>
@@ -61,5 +62,4 @@
     <string name="tv_longitud1">Longitud</string>
     <string name="tv_altura1">Altura</string>
     <string name="todo" />
-
 </resources>
