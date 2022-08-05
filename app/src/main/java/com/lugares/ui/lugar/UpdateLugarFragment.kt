@@ -116,21 +116,20 @@ class UpdateLugarFragment : Fragment() {
     private fun llamarLugar() {
 
         val recurso = binding.etTelefono.text.toString()
-        if (recurso.isNotEmpty()){
-            //se activa el correo
+        if(recurso.isNotEmpty()) {
+
             val rutina = Intent(Intent.ACTION_CALL)
-            rutina.data = Uri.parse("tell:$recurso")
-            if (
-                requireActivity().checkSelfPermission(android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-                    requireActivity().requestPermissions(arrayOf(android.Manifest.permission.CALL_PHONE),105)
-                }else{
-                    requireActivity().startActivity(rutina)
+            rutina.data = Uri.parse("tel:$recurso")
+            if(requireActivity().checkSelfPermission(android.Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED){
+
+                requireActivity().requestPermissions(arrayOf(android.Manifest.permission.CALL_PHONE),
+                    105)
+            }else{
+                requireActivity().startActivity(rutina)
             }
-        }else{
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.msg_datos),Toast.LENGTH_SHORT
-            ).show()
+        } else {
+            Toast.makeText(requireContext(),getString(R.string.msg_datos),Toast.LENGTH_SHORT)
         }
     }
 
